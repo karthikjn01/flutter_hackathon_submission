@@ -61,22 +61,16 @@ class NavigatorBarState extends State<NavigatorBar> {
                       isOpened: openedTabIndex == 0,
                     ),
                     NavigatorElement(
-                      icon: EvaIcons.searchOutline,
+                      icon: EvaIcons.heartOutline,
                       select: selectTab,
                       position: 1,
                       isOpened: openedTabIndex == 1,
                     ),
                     NavigatorElement(
-                      icon: EvaIcons.heartOutline,
+                      icon: EvaIcons.personOutline,
                       select: selectTab,
                       position: 2,
                       isOpened: openedTabIndex == 2,
-                    ),
-                    NavigatorElement(
-                      icon: EvaIcons.personOutline,
-                      select: selectTab,
-                      position: 3,
-                      isOpened: openedTabIndex == 3,
                     )
                   ],
                 ),
@@ -106,7 +100,7 @@ class NavigatorBarState extends State<NavigatorBar> {
       this.color = color;
       this.openedTabIndex = tabIndex;
       this._positionFromLeft =
-          ((width * (openedTabIndex)) / 4.0) + width / 8.0 - 2.5;
+          ((width * (openedTabIndex)) / 3.0) + width / 8.0 - 2.5;
     });
 
     print(this._positionFromLeft);

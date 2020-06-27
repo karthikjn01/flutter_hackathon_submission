@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_hackathon_submission/Components/Button.dart';
 import 'package:flutter_hackathon_submission/Screens/Notepad.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 import 'Components/navigator.dart';
+import 'Screens/Home.dart';
+import 'Utils/User.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,66 +15,53 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    FlutterStatusbarcolor.setStatusBarColor(Color(0xff303138));
+    FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
+    FlutterStatusbarcolor.setNavigationBarColor(Color(0xff303138));
+
     return MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
           primaryColor: Color(0xff54ffb8),
+          primaryColorDark: Color(0xffff5e7c),
           scaffoldBackgroundColor: Color(0xff303138),
           disabledColor: Color(0xff3d6b6a),
+          textTheme: TextTheme(
+            headline1: TextStyle(
+                color: Color(0xff54ffb8),
+                fontSize: 30,
+                fontWeight: FontWeight.bold),
+            bodyText1: TextStyle(
+              color: Color(0xff36c98c),
+            ),
+            overline: TextStyle(
+              color: Color(0xff303138),
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
         debugShowCheckedModeBanner: false,
-        home: Home());
+        home: Login());
   }
 }
 
-class Home extends StatelessWidget {
-  var _home = Notepad();
-  var _forum = Container();
-  var _account = Container();
-  var _controller = PageController();
-
-  int _currentPosition;
+class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
-        controller: _controller,
-        children: [_home, _forum, _account],
-        scrollDirection: Axis.horizontal,
-        pageSnapping: true,
-        physics: NeverScrollableScrollPhysics(),
-      ),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-            color: Theme.of(context).scaffoldBackgroundColor,
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(25.0),
-                topRight: Radius.circular(25.0)),
-            boxShadow: [
-              BoxShadow(
-                blurRadius: 10,
-                spreadRadius: 0.0,
-                offset: Offset(0, 0),
-                color: Colors.black.withOpacity(0.2),
-              )
-            ]),
-        child: Padding(
-          padding: const EdgeInsets.only(top: 8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              NavigatorBar(
-                (currentPosition) {
-                  _controller.animateToPage(currentPosition,
-                      duration: Duration(milliseconds: 500),
-                      curve: Curves.easeInOut);
-                },
-                key: key,
-              ),
-            ],
-          ),
-        ),
+      body: Center(
+        child: Button("ENTER", Theme.of(context).primaryColor, () {
+          User.login().then((value) {
+            print(value);
+
+            if (value == 0) {
+              User.signInWithGoogle().then((s) {
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (_) => Home()));
+              });
+            }
+          });
+        }),
       ),
     );
   }

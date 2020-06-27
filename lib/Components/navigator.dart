@@ -36,7 +36,8 @@ class NavigatorBarState extends State<NavigatorBar> {
     setState(() {
       width = _currentIndex.currentContext.size.width;
 
-      _positionFromLeft = width / 8.0 - 2.5;
+      this._positionFromLeft =
+          ((width * (openedTabIndex)) / 3.0) + width / 6.0 - 2.5;
     });
   }
 
@@ -100,7 +101,7 @@ class NavigatorBarState extends State<NavigatorBar> {
       this.color = color;
       this.openedTabIndex = tabIndex;
       this._positionFromLeft =
-          ((width * (openedTabIndex)) / 3.0) + width / 8.0 - 2.5;
+          ((width * (openedTabIndex)) / 3.0) + width / 6.0 - 2.5;
     });
 
     print(this._positionFromLeft);

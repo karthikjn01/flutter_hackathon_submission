@@ -150,7 +150,8 @@ class _NavigatorElementState extends State<NavigatorElement>
         ? _controller.animateTo(0.0,
             duration: Duration(milliseconds: 500), curve: Curves.easeInOutCubic)
         : _controller.animateTo(1.0,
-            duration: Duration(milliseconds: 500), curve: Curves.easeInOutCubic);
+            duration: Duration(milliseconds: 500),
+            curve: Curves.easeInOutCubic);
   }
 
   @override
@@ -164,7 +165,8 @@ class _NavigatorElementState extends State<NavigatorElement>
         ? _controller.animateTo(0.0,
             duration: Duration(milliseconds: 500), curve: Curves.easeInOutCubic)
         : _controller.animateTo(1.0,
-            duration: Duration(milliseconds: 500), curve: Curves.easeInOutCubic);
+            duration: Duration(milliseconds: 500),
+            curve: Curves.easeInOutCubic);
 
     return Material(
       color: Colors.transparent,

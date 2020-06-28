@@ -60,18 +60,24 @@ class NavigatorBarState extends State<NavigatorBar> {
                       select: selectTab,
                       position: 0,
                       isOpened: openedTabIndex == 0,
+                      color: Theme.of(context).primaryColor,
+                      disabledColor: Theme.of(context).disabledColor,
                     ),
                     NavigatorElement(
-                      icon: EvaIcons.heartOutline,
+                      icon: EvaIcons.messageSquareOutline,
                       select: selectTab,
                       position: 1,
                       isOpened: openedTabIndex == 1,
+                      color: Theme.of(context).primaryColorDark,
+                      disabledColor: Theme.of(context).accentColor,
                     ),
                     NavigatorElement(
                       icon: EvaIcons.personOutline,
                       select: selectTab,
                       position: 2,
                       isOpened: openedTabIndex == 2,
+                      color: Theme.of(context).primaryColorLight,
+                      disabledColor: Theme.of(context).splashColor,
                     )
                   ],
                 ),
@@ -81,11 +87,16 @@ class NavigatorBarState extends State<NavigatorBar> {
                 curve: Curves.easeInOutCubic,
                 bottom: 17,
                 left: _positionFromLeft,
-                child: Container(
+                child: AnimatedContainer(
+                  duration: Duration(milliseconds: 500),
                   width: 5.0,
                   height: 5.0,
                   decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor,
+                      color: openedTabIndex == 0
+                          ? Theme.of(context).primaryColor
+                          : openedTabIndex == 1
+                              ? Theme.of(context).primaryColorDark
+                              : Theme.of(context).primaryColorLight,
                       borderRadius: BorderRadius.all(Radius.circular(20.0))),
                 ),
               )
@@ -112,9 +123,17 @@ class NavigatorElement extends StatefulWidget {
   final IconData icon;
   final bool isOpened;
   final int position;
+  final Color color;
+  final Color disabledColor;
   final Function(int) select;
 
-  NavigatorElement({this.icon, this.isOpened, this.position, this.select});
+  NavigatorElement(
+      {this.icon,
+      this.isOpened,
+      this.position,
+      this.select,
+      this.color,
+      this.disabledColor});
 
   @override
   _NavigatorElementState createState() => _NavigatorElementState();
@@ -124,9 +143,7 @@ class _NavigatorElementState extends State<NavigatorElement>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
 
-  Color get color => widget.isOpened
-      ? Theme.of(context).primaryColor
-      : Theme.of(context).disabledColor;
+  Color get color => widget.isOpened ? widget.color : widget.disabledColor;
 
   Animatable<Color> background;
   Animatable<double> size;
@@ -151,10 +168,7 @@ class _NavigatorElementState extends State<NavigatorElement>
 
   @override
   Widget build(BuildContext context) {
-    background = ColorTween(
-      begin: Theme.of(context).primaryColor,
-      end: Theme.of(context).disabledColor,
-    );
+    background = ColorTween(begin: widget.color, end: widget.disabledColor);
 
     widget.isOpened
         ? _controller.animateTo(0.0,
@@ -172,6 +186,7 @@ class _NavigatorElementState extends State<NavigatorElement>
         highlightColor: Colors.transparent,
         hoverColor: Colors.transparent,
         splashRadius: 50.0,
+
         icon: AnimatedBuilder(
           animation: _controller,
           builder: (BuildContext context, Widget child) {

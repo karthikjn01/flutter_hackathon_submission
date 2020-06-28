@@ -9,27 +9,42 @@ class NoteCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 25.0, vertical: 20.0),
-      color: Theme.of(context).scaffoldBackgroundColor,
-      child: Row(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Text(
-                note.title,
-                style: Theme.of(context).textTheme.headline1,
-              ),
-              Text(
-                note.description,
-                style: Theme.of(context).textTheme.bodyText1,
-              ),
-            ],
-          ),
-        ],
+    return GestureDetector(
+      onTap: () {
+        note.showBottomSheetView(context);
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 25.0, vertical: 20.0),
+        color: Theme.of(context).scaffoldBackgroundColor,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    note.title.toUpperCase(),
+                    softWrap: true,
+                    textAlign: TextAlign.start,
+                    style: Theme.of(context).textTheme.headline2,
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    note.description,
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

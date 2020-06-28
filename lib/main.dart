@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_hackathon_submission/Components/Button.dart';
-import 'package:flutter_hackathon_submission/Screens/Notepad.dart';
-import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
-import 'Components/navigator.dart';
+import 'package:flutter_hackathon_submission/Components/Button.dart';
+
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 import 'Screens/Home.dart';
 import 'Utils/User.dart';
 
@@ -22,19 +23,36 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-          primaryColor: Color(0xff54ffb8),
-          primaryColorDark: Color(0xffff5e7c),
-          scaffoldBackgroundColor: Color(0xff303138),
+          primaryColor: Color(0xff30fca4),
+          primaryColorDark: Color(0xffff3364),
+          primaryColorLight: Color(0xffbc47ff),
+          accentColor: Color(0xff703241),
+          splashColor: Color(0xff563366),
           disabledColor: Color(0xff3d6b6a),
+          scaffoldBackgroundColor: Color(0xff303138),
           textTheme: TextTheme(
-            headline1: TextStyle(
-                color: Color(0xff54ffb8),
-                fontSize: 30,
-                fontWeight: FontWeight.bold),
-            bodyText1: TextStyle(
-              color: Color(0xff36c98c),
+            headline1: GoogleFonts.poppins(
+                shadows: [
+                  BoxShadow(color: Color(0xffffffff).withOpacity(0.1)
+                      , spreadRadius: 2.0, blurRadius: 5.0)
+                ],
+                color: Color(0xff30fca4),
+                fontSize: 35,
+                fontWeight: FontWeight.w800,
             ),
-            overline: TextStyle(
+            headline2: GoogleFonts.poppins(
+              shadows: [
+                BoxShadow(color: Color(0xffffffff).withOpacity(0.1)
+                    , spreadRadius: 2.0, blurRadius: 5.0)
+              ],
+              color: Color(0xff30fca4),
+              fontSize: 25,
+              fontWeight: FontWeight.w600,
+            ),
+            bodyText1: GoogleFonts.poppins(
+              color: Color(0xff30fca4),
+            ),
+            overline: GoogleFonts.poppins(
               color: Color(0xff303138),
               fontWeight: FontWeight.bold,
             ),
@@ -45,7 +63,26 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
+  @override
+  _LoginState createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
+    User.login().then((value) {
+      if (value == 1) {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (_) => Home()));
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,6 +96,9 @@ class Login extends StatelessWidget {
                 Navigator.pushReplacement(
                     context, MaterialPageRoute(builder: (_) => Home()));
               });
+            } else {
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (_) => Home()));
             }
           });
         }),

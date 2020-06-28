@@ -1,44 +1,71 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hackathon_submission/Components/navigator.dart';
+import 'package:flutter_hackathon_submission/Screens/AccountPage.dart';
+import 'package:flutter_hackathon_submission/Structures/Note.dart';
+import 'package:uuid/uuid.dart';
 
+import 'ForumPage.dart';
 import 'Notepad.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   var _home = Notepad();
-  GlobalKey key;
-  var _forum = Container();
-  var _account = Container();
+
+  GlobalKey<NavigatorBarState> key;
+
+  var _forum;
+
+  var _account = AccountPage();
+
   var _controller = PageController();
 
-  int _currentPosition;
+  int _currentPosition = 0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    key = GlobalKey<NavigatorBarState>();
+    _forum = ForumPage(_controller);
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        floatingActionButton: FloatingActionButton.extended(
-          elevation: 0.0,
-          label: Text(
-            "Add",
-            style: Theme.of(context)
-                .textTheme
-                .bodyText1
-                .copyWith(color: Theme.of(context).scaffoldBackgroundColor),
-          ),
-          icon: Icon(
-            Icons.add,
-            color: Theme.of(context).scaffoldBackgroundColor,
-          ),
-          backgroundColor: Theme.of(context).primaryColor,
-          onPressed: () {
-            print("CLICKED");
-          },
-        ),
+        floatingActionButton: _currentPosition == 0
+            ? FloatingActionButton.extended(
+                elevation: 0.0,
+                label: Text(
+                  "Add",
+                  style: Theme.of(context).textTheme.bodyText1.copyWith(
+                      color: Theme.of(context).scaffoldBackgroundColor),
+                ),
+                icon: Icon(
+                  Icons.add,
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                ),
+                backgroundColor: Theme.of(context).primaryColor,
+                onPressed: () {
+                  Note(Uuid().v4().toString(), "", "",
+                          Duration(milliseconds: 500000))
+                      .showBottomSheetView(context);
+                },
+              )
+            : null,
         body: PageView(
           controller: _controller,
           children: [_home, _forum, _account],
           scrollDirection: Axis.horizontal,
           pageSnapping: true,
+//          onPageChanged: (i) {
+//            key.currentState.selectTab(i);
+//          },
           physics: NeverScrollableScrollPhysics(),
         ),
         bottomNavigationBar: Container(
@@ -63,6 +90,10 @@ class Home extends StatelessWidget {
               children: <Widget>[
                 NavigatorBar(
                   (currentPosition) {
+                    setState(() {
+                      _currentPosition = currentPosition;
+                    });
+
                     _controller.animateToPage(currentPosition,
                         duration: Duration(milliseconds: 500),
                         curve: Curves.easeInOut);

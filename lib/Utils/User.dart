@@ -55,13 +55,13 @@ class User {
     return user;
   }
 
-  static void signOutGoogle() async {
+  static Future<void> signOutGoogle() async {
     await _googleSignIn.signOut();
     await _auth.signOut();
 
     user = null;
     u = null;
 
-    print("User Sign Out");
+    return;
   }
 }

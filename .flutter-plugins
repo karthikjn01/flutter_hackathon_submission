@@ -1,12 +1,12 @@
 # This is a generated file; do not edit or check into version control.
-cloud_firestore=C:\\Users\\karth\\AppData\\Roaming\\Pub\\Cache\\hosted\\pub.dartlang.org\\cloud_firestore-0.12.11\\
-firebase_auth=C:\\Users\\karth\\AppData\\Roaming\\Pub\\Cache\\hosted\\pub.dartlang.org\\firebase_auth-0.14.0+9\\
-firebase_core=C:\\Users\\karth\\AppData\\Roaming\\Pub\\Cache\\hosted\\pub.dartlang.org\\firebase_core-0.4.5\\
-firebase_core_web=C:\\Users\\karth\\AppData\\Roaming\\Pub\\Cache\\hosted\\pub.dartlang.org\\firebase_core_web-0.1.1+2\\
-flutter_statusbarcolor=C:\\Users\\karth\\AppData\\Roaming\\Pub\\Cache\\hosted\\pub.dartlang.org\\flutter_statusbarcolor-0.2.3\\
-google_sign_in=C:\\Users\\karth\\AppData\\Roaming\\Pub\\Cache\\hosted\\pub.dartlang.org\\google_sign_in-4.5.1\\
-google_sign_in_web=C:\\Users\\karth\\AppData\\Roaming\\Pub\\Cache\\hosted\\pub.dartlang.org\\google_sign_in_web-0.9.1+1\\
-path_provider=C:\\Users\\karth\\AppData\\Roaming\\Pub\\Cache\\hosted\\pub.dartlang.org\\path_provider-1.6.11\\
-path_provider_linux=C:\\Users\\karth\\AppData\\Roaming\\Pub\\Cache\\hosted\\pub.dartlang.org\\path_provider_linux-0.0.1+1\\
-path_provider_macos=C:\\Users\\karth\\AppData\\Roaming\\Pub\\Cache\\hosted\\pub.dartlang.org\\path_provider_macos-0.0.4+3\\
-screen=C:\\Users\\karth\\AppData\\Roaming\\Pub\\Cache\\hosted\\pub.dartlang.org\\screen-0.0.5\\
+cloud_firestore=/Users/karthik/.pub-cache/hosted/pub.dartlang.org/cloud_firestore-0.12.11/
+firebase_auth=/Users/karthik/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.14.0+9/
+firebase_core=/Users/karthik/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.4.5/
+firebase_core_web=/Users/karthik/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-0.1.1+2/
+flutter_statusbarcolor=/Users/karthik/.pub-cache/hosted/pub.dartlang.org/flutter_statusbarcolor-0.2.3/
+google_sign_in=/Users/karthik/.pub-cache/hosted/pub.dartlang.org/google_sign_in-4.5.1/
+google_sign_in_web=/Users/karthik/.pub-cache/hosted/pub.dartlang.org/google_sign_in_web-0.9.1+1/
+path_provider=/Users/karthik/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.11/
+path_provider_linux=/Users/karthik/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-0.0.1+1/
+path_provider_macos=/Users/karthik/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-0.0.4+3/
+screen=/Users/karthik/.pub-cache/hosted/pub.dartlang.org/screen-0.0.5/

@@ -38,8 +38,8 @@
 29        android:debuggable="true"
 30        android:icon="@mipmap/launcher_icon"
 30-->D:\flutter_hackathon_submission\android\app\src\main\AndroidManifest.xml:13:9-45
-31        android:label="flutter_hackathon_submission" >
-31-->D:\flutter_hackathon_submission\android\app\src\main\AndroidManifest.xml:12:9-53
+31        android:label="Drive" >
+31-->D:\flutter_hackathon_submission\android\app\src\main\AndroidManifest.xml:12:9-30
 32        <activity
 32-->D:\flutter_hackathon_submission\android\app\src\main\AndroidManifest.xml:14:9-42:20
 33            android:name="com.example.flutter_hackathon_submission.MainActivity"

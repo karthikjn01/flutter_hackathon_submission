@@ -93,7 +93,7 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\ka
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.1.0] C:\Users\karth\.gradle\caches\transforms-2\files-2.1\3aaf6e5219b7f981ec263df919098c6f\core-1.1.0\AndroidManifest.xml:24:18-86
 	android:label
-		ADDED from D:\flutter_hackathon_submission\android\app\src\main\AndroidManifest.xml:12:9-53
+		ADDED from D:\flutter_hackathon_submission\android\app\src\main\AndroidManifest.xml:12:9-30
 	android:icon
 		ADDED from D:\flutter_hackathon_submission\android\app\src\main\AndroidManifest.xml:13:9-45
 	android:name

@@ -9,7 +9,7 @@
 
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="flutter_hackathon_submission"
+        android:label="Drive"
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"

@@ -32,18 +32,22 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Color(0xff303138),
           textTheme: TextTheme(
             headline1: GoogleFonts.poppins(
-                shadows: [
-                  BoxShadow(color: Color(0xffffffff).withOpacity(0.1)
-                      , spreadRadius: 2.0, blurRadius: 5.0)
-                ],
-                color: Color(0xff30fca4),
-                fontSize: 35,
-                fontWeight: FontWeight.w800,
+              shadows: [
+                BoxShadow(
+                    color: Color(0xffffffff).withOpacity(0.1),
+                    spreadRadius: 2.0,
+                    blurRadius: 5.0)
+              ],
+              color: Color(0xff30fca4),
+              fontSize: 35,
+              fontWeight: FontWeight.w800,
             ),
             headline2: GoogleFonts.poppins(
               shadows: [
-                BoxShadow(color: Color(0xffffffff).withOpacity(0.1)
-                    , spreadRadius: 2.0, blurRadius: 5.0)
+                BoxShadow(
+                    color: Color(0xffffffff).withOpacity(0.1),
+                    spreadRadius: 2.0,
+                    blurRadius: 5.0)
               ],
               color: Color(0xff30fca4),
               fontSize: 25,
@@ -87,21 +91,28 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Button("ENTER", Theme.of(context).primaryColor, () {
-          User.login().then((value) {
-            print(value);
+        child: Container(
+          padding: EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              Expanded(child: Image.asset("icon.png")),
+              Button("ENTER", Theme.of(context).primaryColor, () {
+                User.login().then((value) {
 
-            if (value == 0) {
-              User.signInWithGoogle().then((s) {
-                Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (_) => Home()));
-              });
-            } else {
-              Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (_) => Home()));
-            }
-          });
-        }),
+                  if (value == 0) {
+                    User.signInWithGoogle().then((s) {
+                      Navigator.pushReplacement(
+                          context, MaterialPageRoute(builder: (_) => Home()));
+                    });
+                  } else {
+                    Navigator.pushReplacement(
+                        context, MaterialPageRoute(builder: (_) => Home()));
+                  }
+                });
+              }),
+            ],
+          ),
+        ),
       ),
     );
   }
